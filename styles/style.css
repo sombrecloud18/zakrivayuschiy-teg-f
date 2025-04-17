@@ -10,6 +10,24 @@
 
 */
 
+@keyframes scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes sparks {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -103,8 +121,8 @@ p {
 .card__image-text {
   position: absolute;
   color: var(--main-color, #000);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #FFF;
+  text-shadow: -1px -1px var(--main-bg-color), 1px -1px var(--main-bg-color),
+  -1px 1px var(--main-bg-color), 1px 1px var(--main-bg-color);
   font-family: var(--accent-font);
   font-size: 14px;
   text-transform: uppercase;
@@ -113,6 +131,15 @@ p {
   opacity: 0.5;
   mix-blend-mode: hard-light;
   z-index: 5;
+}
+
+@supports (-webkit-text-stroke: var(--color-accent)) {
+  .card__image-text {
+    text-shadow: none;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FFF;
+    text-stroke: 1px #fff;
+  }
 }
 
 .card__image {
@@ -304,7 +331,6 @@ p {
 
 .card-icon__button {
   background: transparent;
-  border: none;
   border: 2px solid transparent;
   height: 38px;
 }
@@ -336,7 +362,7 @@ p {
   transition: fill 0.3s linear 0.05s;
 }
 
-.like-icon:hover .core{
+.like-icon:hover .core {
   fill: var(--contour-color);
   transition: fill 0.3s linear ;
 }
@@ -378,22 +404,4 @@ p {
 
 .like-icon:not(.is-liked) .contour {
   transition: fill 0.1s linear;
-}
-
-@keyframes scale {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.25);
-  }
-}
-
-@keyframes sparks {
-  from {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
 }
