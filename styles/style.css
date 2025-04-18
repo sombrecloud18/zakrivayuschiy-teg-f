@@ -149,6 +149,7 @@ p {
   flex-direction: row;
   align-items: center;
   align-self: end;
+  gap: 6px;
 }
 
 .card__like-button {
@@ -159,6 +160,7 @@ p {
   text-align: center;
   max-inline-size: 130px;
   min-inline-size: 130px;
+  block-size: 38px;
 }
 
 .post {
@@ -285,6 +287,7 @@ button.save_button {
   color: var(--button-color);
   border: solid 2px var(--main-color);
   background-color: transparent;
+  transition: box-shadow 0.3s ease;
 }
 
 .button:focus {
@@ -293,7 +296,6 @@ button.save_button {
 
 .button:focus-visible {
   box-shadow: 2px 2px 0 #000;
-  transition: box-shadow 0.3s ease;
 }
 
 .button:hover {

@@ -30,6 +30,7 @@
   
 
 .card-icon__button {
+    padding: 0;
     background: transparent;
     border: 2px solid transparent;
     height: 38px;
