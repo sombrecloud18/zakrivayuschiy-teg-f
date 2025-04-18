@@ -10,24 +10,6 @@
 
 */
 
-@keyframes scale {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.25);
-  }
-}
-
-@keyframes sparks {
-  from {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
 *,
 *::before,
 *::after {
@@ -49,9 +31,8 @@ p {
   min-block-size: 100dvb;
   font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wght' var(--main-font-weight);
-  background-image: repeating-linear-gradient(90deg, #d3d3d3 0 2px, rgb(0 0 0 / 0) 2px 4px), 
-    repeating-linear-gradient(180deg, #d3d3d3 0 2px, rgb(0 0 0 / 0) 2px 4px), 
-    linear-gradient(180deg, #e7e7e7 0%, #e7e7e7 0.01%, #1a1a1a 100%);
+  background-color: var(--main-bg-color);
+  background-image: var(--background-gradient);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,7 +96,8 @@ p {
 
 .card__image-block {
   position: relative;
-  border: solid 2px var(--main-color);
+  border-right: solid 2px var(--main-color);
+  border-left: solid 2px var(--main-color);
 }
 
 .card__image-text {
@@ -123,7 +105,7 @@ p {
   color: var(--main-color, #000);
   text-shadow: -1px -1px var(--main-bg-color), 1px -1px var(--main-bg-color),
   -1px 1px var(--main-bg-color), 1px 1px var(--main-bg-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font) fantasy;
   font-size: 14px;
   text-transform: uppercase;
   right: 25px;
@@ -191,7 +173,7 @@ p {
   margin-bottom: 105px;
 }
 
-.save_button {
+button.save_button {
   padding: 15px 21px 15px 19px;
   display: flex;
   flex-direction: row;
@@ -207,14 +189,13 @@ p {
   grid-template-columns: auto 1fr;
   align-items: center;
   width: 357px;
-  height: 193px;
   gap: 20px;
   padding: 30px;
   border: 2px solid var(--main-color);
 }
 
 .save_dialog[open]::backdrop {
-  backdrop-filter: brightness(25%);
+  background-color: rgb(0, 0, 0, 0.75);
 }
 
 .dialog__icon {
@@ -231,7 +212,7 @@ p {
   grid-row: 1;
   grid-column: 2;
   z-index: 10;
-  text-align: center;
+  text-align: left;
   position: relative;
 }
 
@@ -303,12 +284,16 @@ p {
   position: relative;
   color: var(--button-color);
   border: solid 2px var(--main-color);
+  background-color: transparent;
 }
 
 .button:focus {
   outline: none;
+}
+
+.button:focus-visible {
   box-shadow: 2px 2px 0 #000;
-  transform: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .button:hover {
@@ -327,81 +312,4 @@ p {
 
 .button:hover:after {
   transform: scaleX(1);
-}
-
-.card-icon__button {
-  background: transparent;
-  border: 2px solid transparent;
-  height: 38px;
-}
-
-.card-icon__button:focus {
-  outline: none;
-}
-
-.card-icon__button:focus-visible {
-  border-color: var(--main-color);
-  transition: border 0.3s ease;
-}
-
-.sparks {
-  opacity: 0%;
-}
-
-.like-icon:hover {
-  cursor: pointer;
-}
-
-.like-icon .core {
-  fill: transparent;
-  transition: fill 0.3s linear 0.03s ;
-}
-
-.like-icon:hover .main-body {
-  fill:  var(--contour-color);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.like-icon:hover .core {
-  fill: var(--contour-color);
-  transition: fill 0.3s linear ;
-}
-
-.like-icon:active .main-body {
-  fill:  var(--animation-fill-color);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.like-icon:active .core {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s linear ;
-}
-
-.like-icon.is-liked .main-body {
-  fill:  var(--animation-fill-color);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.like-icon.is-liked .core {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s linear ;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s linear 0.06s;
-}
-
-.like-icon.is-liked .heart {
-  transform-origin: center;
-  animation: scale 0.3s 0.1s ease-in 1;
-}
-
-.like-icon.is-liked .sparks {
-  transform-origin: center;
-  animation: sparks 0.3s 0.3s ease-in 1;
-}
-
-.like-icon:not(.is-liked) .contour {
-  transition: fill 0.1s linear;
 }
